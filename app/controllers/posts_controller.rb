@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
-  def index #indexアクション（トップページ表示）の定義
-    @posts = Post.all
+  def index 
+    @posts = Post.all.order(id: "DESC")
   end
-  def new
-  end
+
   def create
     Post.create(content: params[:content])
+    redirect_to action: :index
   end
+
 end
